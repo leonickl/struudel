@@ -1,1 +1,1 @@
-<button class="font-bold bg-blue-200 text-blue-600 px-10 py-2 border rounded-lg cursor-pointer" onclick="{{ $action }}">{{ $slot }}</button>
+<button type="button" class="font-bold bg-blue-200 text-blue-600 px-10 py-2 border rounded-lg cursor-pointer" onclick="{{ $action }}">{{ $slot }}</button>
