@@ -33,10 +33,9 @@
 
         <div class="flex flex-row gap-10">
             <x-btn :action="'addDate()'">+</x-btn>
-            <x-btn :action="'removeDate()'">&times;</x-btn>
+            <x-btn-submit>Send</x-btn-submit>
         </div>
 
-        <x-btn-submit>Send</x-btn-submit>
     </form>
 
     <script>
