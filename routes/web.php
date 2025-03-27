@@ -37,10 +37,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/events/{event:uuid}/answers/create', [AnswerController::class, 'create'])
         ->name('answers.create');
-
-    Route::post('/events/{event:uuid}/answers', [AnswerController::class, 'store'])
-        ->name('answers.store');
 });
 
 Route::get('/e/{event:uuid}', [AnswerController::class, 'create'])
     ->name('answers.create.short');
+
+Route::post('/events/{event:uuid}/answers', [AnswerController::class, 'store'])
+    ->name('answers.store');
