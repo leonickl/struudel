@@ -1,26 +1,30 @@
 <x-layout>
-    <x-h1>Welcome</x-h1>
+    <div class="max-w-md mx-auto mt-16 px-4 sm:px-6 lg:px-8 text-center">
+        <x-h1>Welcome</x-h1>
 
+        <x-buttons class="mt-8 flex flex-wrap justify-center gap-4">
+            @guest
+                <x-btn-link :href="route('register')" class="px-8 py-3">
+                    Register
+                </x-btn-link>
 
-    <x-buttons>
-        @guest
-            <a href="{{ route('register') }}"
-               class="text-center font-bold bg-blue-200 text-blue-600 px-10 py-2 border rounded-lg">Register</a>
-            <a href="{{ route('login') }}"
-               class="text-center font-bold bg-blue-200 text-blue-600 px-10 py-2 border rounded-lg">Login</a>
-        @endguest
+                <x-btn-link :href="route('login')" class="px-8 py-3">
+                    Login
+                </x-btn-link>
+            @endguest
 
-        @auth
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit"
-                        class="text-center font-bold bg-blue-200 text-blue-600 px-10 py-2 border rounded-lg">
-                    Logout
-                </button>
-            </form>
+            @auth
+                <form method="POST" action="{{ route('logout') }}" class="inline">
+                    @csrf
+                    <x-btn-submit class="px-8 py-3">
+                        Logout
+                    </x-btn-submit>
+                </form>
 
-            <a href="{{ route('events.index') }}"
-               class="text-center font-bold bg-blue-200 text-blue-600 px-10 py-2 border rounded-lg">Events</a>
-        @endauth
-    </x-buttons>
+                <x-btn-link :href="route('events.index')" class="px-8 py-3">
+                    Events
+                </x-btn-link>
+            @endauth
+        </x-buttons>
+    </div>
 </x-layout>

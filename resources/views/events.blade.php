@@ -1,33 +1,37 @@
 <x-layout>
-    <x-h1>Events</x-h1>
+    <div class="max-w-5xl mx-auto mt-10 px-4 sm:px-6 lg:px-8">
+        <x-h1>Events</x-h1>
 
-    <x-buttons>
-        <x-btn-link :href="route('events.create')">Create new Event</x-btn-link>
-    </x-buttons>
+        <!-- Action Buttons -->
+        <x-buttons class="mt-6">
+            <x-btn-link :href="route('events.create')">Create new Event</x-btn-link>
+        </x-buttons>
 
-    <div class="grid items-center justify-center">
-
-        <div class="flex flex-wrap gap-4 gap-5 m-5">
+        <!-- Events Grid -->
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             @foreach($events as $event)
-                <div class="flex-1 border p-5 rounded min-w-50">
-                    <div class="font-bold mb-5">
-                        <a href="{{ route('events.view', $event) }}">{{ $event->name }}</a>
+                <div
+                    class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm p-6 flex flex-col justify-between">
+                    <div class="mb-4">
+                        <a href="{{ route('events.view', $event) }}"
+                            class="text-xl font-semibold text-blue-600 dark:text-blue-400 hover:underline">
+                            {{ $event->name }}
+                        </a>
                     </div>
 
-                    <div>
-                        {{ count($event->answers) ?: 'no' }} answers
+                    <div class="text-gray-700 dark:text-gray-300 mb-1">
+                        {{ count($event->answers) ?: 'No' }} answers
                     </div>
 
                     @if(count($event->answers) > 0)
-                        <div>
-                            {{ $event->best() === null
-                                ? 'no best options found'
-                                : 'best options: ' . join(', ', $event->best()) }}
-                        </div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">
+                                {{ $event->best() === null
+                        ? 'No best options found'
+                        : 'Best options: ' . join(', ', $event->best()) }}
+                            </div>
                     @endif
                 </div>
             @endforeach
         </div>
-
     </div>
 </x-layout>
