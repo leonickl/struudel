@@ -14,7 +14,7 @@
                 <div class="bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg p-4">
                     <div class="text-gray-900 dark:text-gray-100 font-medium">
                         <span class="font-bold">{{ $date }}:</span>
-                        <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">{{ json_encode($score) }}</span>
+                        <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">{{ $score ? json_encode($score) : '---' }}</span>
                     </div>
                 </div>
             @endforeach
