@@ -4,9 +4,11 @@
 
         <x-buttons class="mt-8 flex flex-wrap justify-center gap-4">
             @guest
-                <x-btn-link :href="route('register')" class="px-8 py-3">
-                    Register
-                </x-btn-link>
+                @if(config('auth.can_register'))
+                    <x-btn-link :href="route('register')" class="px-8 py-3">
+                        Register
+                    </x-btn-link>
+                @endif
 
                 <x-btn-link :href="route('login')" class="px-8 py-3">
                     Login

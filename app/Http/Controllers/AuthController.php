@@ -6,17 +6,26 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\UnauthorizedException;
 use Illuminate\View\View;
 
 class AuthController extends Controller
 {
     public function showRegister(): View
     {
+        if (!config('auth.can_register')) {
+            throw new UnauthorizedException('registration is forbidden');
+        }
+
         return view('register');
     }
 
     public function register(): RedirectResponse
     {
+        if(!config('auth.can_register')) {
+            throw new UnauthorizedException('registration is forbidden');
+        }
+
         request()->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
